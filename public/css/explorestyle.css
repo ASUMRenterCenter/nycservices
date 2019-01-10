@@ -54,7 +54,7 @@ a, a:hover, a:focus {
     max-width: 270px;
     background: #f3f3f3;
     color: #424242;
-    z-index: 300;
+    z-index: 1200;
     transition: all 0.3s;
     box-shadow: 0 1px 6px rgba(57,73,76,.35);
 
@@ -66,7 +66,7 @@ a, a:hover, a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #b8e6e2;
+    background: #A2E9FF;
 }
 
 #sidebar ul.components {
@@ -186,7 +186,7 @@ li.status-side:hover {
 }
 
 .bg-custom{
-  background-color: #3f8a7b;
+  background-color: #2196F3;
 }
 
 p{
@@ -212,6 +212,7 @@ p{
     padding: 0px;
     transition: all 0.3s;
     background: white;
+    min-height: calc(100% - 134px);
 /*    position: absolute;
     top: 0;
     right: 0;*/
@@ -238,6 +239,12 @@ p{
 .filter-desktop{
   display: block;
 }
+.sidebar-menu{
+  display: none;
+}
+.home-sidebar{
+  display: none;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -247,15 +254,15 @@ p{
     }
     #sidebar.active {
         margin-left: 0;
-        position: absolute;
-        height: calc(100% - 68px);
+        position: absolute !important;
+        height: calc(100%);
     }
     #content {
         width: 100%;
-        position: absolute;
+        position: static;
         bottom: 0;
-        top: 68px;
-        overflow-y: scroll;
+        top: 0px;
+        overflow-y: hidden;
     }
     #content.active {
         /*left: 270px;*/
@@ -302,6 +309,16 @@ p{
     }
     .profile-location{
       display: block;
+    }
+    .nav-menu{
+      display: none !important;
+    }
+    .sidebar-menu{
+      display: block;
+    }
+    .home-sidebar{
+      display: block;
+      height: 0;
     }
 }
 
@@ -492,9 +509,9 @@ p{
   }
 }
 @media (max-width: 991px) {
-  .page{
+/*  .page{
   padding-top: 50px;
-  } 
+  } */
   .ticker{
     display: none;
   }
@@ -522,7 +539,8 @@ p{
 }
 .btn_findout{
   background-color: transparent;
-  border: 0;
+  border: 1.3px solid white;
+  border-radius: .215rem;
 }
 /*
 .ui-menu .ui-menu-item:hover:before {
@@ -552,12 +570,9 @@ p{
   padding-left: 7px;
     
 }
-.site-footer {
-  padding: 0;
-  height: auto;
-}
+
 .footer-feedback{
-  background-color: #3f8a7b;
+  background-color: #2196F3;
   min-height: 68px;
   color: white;
 }
@@ -570,7 +585,7 @@ p{
   color: #424242;
 }
 .btn-feedback{
-  background-color: #b8e6e2;
+  background-color:  #A2E9FF;
   color: #3c3c3c;
   width: 140px;
   margin-top: 12px;
@@ -614,7 +629,7 @@ p{
 /*  position: relative;*/
   width: 33.333333%;
   height: 60%;
-  margin-top: 15px;
+  margin-top: 18px;
   z-index: 30000;
   box-shadow: 0 1px 6px rgba(57,73,76,.35);
 }
@@ -709,4 +724,22 @@ p{
   background-color:transparent;
   color:#fff;
   border: 0;
+}
+.btn-search{
+  padding-right: 20px !important;
+  background: #2196F3;
+  border-color: #2196F3;
+}
+.alert-chip{
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+}
+.footer-menu{
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.0715rem;
+  padding-left: 1.0715rem;
+  width: 100%;
 }

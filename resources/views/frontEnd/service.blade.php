@@ -44,9 +44,13 @@ ul#ui-id-1 {
                         <h2>{{$service->service_name}}</h2>
                         <h4 class="panel-text"><span class="badge bg-red">Alternate Name:</span> {{$service->service_alternate_name}}</h4>
 
-                        <h4 class="panel-text"><span class="badge bg-red">Category:</span> {{$service->taxonomy()->first()->taxonomy_name}}</h4>
+                        @if($service->service_taxonomy!=0)
+                        <h4><span class="badge bg-red">Category:</span> <a class="panel-link" href="/category_{{$service->taxonomy()->first()->taxonomy_recordid}}"> {{$service->taxonomy()->first()->taxonomy_name}}</a></h4>
+                        @endif
 
-                        <h4 class="panel-text"><span class="badge bg-red">Organization:</span> {{$service->organization()->first()->organization_name}}</h4>
+                        @if($service->service_organization!=null)
+                        <h4><span class="badge bg-red">Organization:</span><a class="panel-link" href="/organization_{{$service->organization()->first()->organization_recordid}}"> {{$service->organization()->first()->organization_name}}</a></h4>
+                        @endif
 
                         <h4 class="panel-text"><span class="badge bg-blue">Description:</span> {!! $service->service_description !!}</h4>
 
@@ -82,12 +86,12 @@ ul#ui-id-1 {
                 <h4><span class="badge bg-blue">Address:</span>
                     
                         @foreach($service->address as $address)
-                           <br>{{ $address->address_1 }}, {{ $address->address_city }}, {{ $address->address_state_province }}, {{ $address->address_postal_code }}
+                           <br>{{ $address->address_1 }} {{ $address->address_city }} {{ $address->address_state_province }} {{ $address->address_postal_code }}
                         @endforeach
                     
                 </h4>
                 @endif
-                @if($service->service_contacts!=NULL)
+                @if($service->service_contacts!=0)
                 <h4><span class="badge bg-red">Contact:</span>
                   
                     {{$service->contact()->first()->contact_name}}
@@ -108,21 +112,21 @@ ul#ui-id-1 {
     </div>
 </div>
 
-<script>
+<!-- <script>
     $(document).ready(function(){
         if(screen.width < 768){
-          var text= $('.navbar-container').css('height');
+          var text= $('.navbar-header').css('height');
           var height = text.slice(0, -2);
           $('.page').css('padding-top', height);
           $('#content').css('top', height);
         }
         else{
-          var text= $('.navbar-container').css('height');
-          var height = text.slice(0, -2);
+          var text= $('.navbar-header').css('height');
+          var height = 0;
           $('.page').css('margin-top', height);
         }
     });
-</script>
+</script> -->
 <script>
     var locations = <?php print_r(json_encode($location)) ?>;
     var show = 1;
